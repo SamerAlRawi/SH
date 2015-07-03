@@ -1,0 +1,64 @@
+﻿<script type="text/javascript">
+    $(document).ready(function () {
+        console.log(ko.components);
+        if (!ko.components.isRegistered('weather')) {
+            ko.components.register('weather', {
+                template: { element: 'weather-template' },
+                viewModel: function (params) { return new buildModel(params); }
+            });
+
+            function buildModel(params) {
+                var self = this;
+                self.Description = ko.observable('');
+                self.Name = ko.observable('');
+                self.showInput = ko.observable(false);
+                self.ZipCode = ko.observable(params.ZipCode);
+                self.NewZipCode = ko.observable('');
+
+                self.changeZipCode = function () {
+                    self.showInput(!self.showInput());
+                };
+
+                self.updateZipCode = function () {
+                    self.ZipCode(self.NewZipCode());
+                    getWeather(self.NewZipCode());
+                    self.changeZipCode();
+                }
+
+                self.updateData = function (data) {
+                    self.Name(data.name);
+                    self.Description(data.weather[0].main);
+                };
+
+                function getWeather(zipcode) {
+                    var weather = 'http://api.openweathermap.org/data/2.5/weather?zip=' + zipcode;
+                    $.ajax({
+                        dataType: "jsonp",
+                        url: weather,
+                        success: self.updateData
+                    });
+                }
+
+                getWeather(self.ZipCode());
+            }
+        }
+    });
+</script>
+
+
+<template id="weather-template">
+    <div>
+        <!-- ko if: showInput() -->
+        <div>
+            <input type="text" data-bind="value: NewZipCode" class="weather-input" />
+            <input type="button" data-bind="click: updateZipCode" class="weather-button" />
+        </div>
+        <!-- /ko -->
+        <!-- ko if: !showInput() -->
+        <span class="fs14 bold" data-bind="text: ZipCode, click: changeZipCode"></span>
+        <!-- /ko -->
+
+        <h4 data-bind="text: Name"></h4>
+        <h4 data-bind="text: Description"></h4>
+    </div>
+</template>

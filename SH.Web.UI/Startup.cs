@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(ASP.NET_MVC5_Bootstrap3_3_1_LESS.Startup))]
-namespace ASP.NET_MVC5_Bootstrap3_3_1_LESS
+[assembly: OwinStartupAttribute(typeof(SH.Web.UI.Startup))]
+namespace SH.Web.UI
 {
     public partial class Startup
     {

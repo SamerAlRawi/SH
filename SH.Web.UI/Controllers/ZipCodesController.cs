@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 
 namespace SH.Web.UI.Controllers
 {
-    public class HomeController : Controller
+    public class ZipCodesController : Controller
     {
-        public ActionResult Index()
+        // GET: ZipCodes
+        public JsonResult Index()
         {
-            return View();
+            return Json("true");
         }
-
     }
 }

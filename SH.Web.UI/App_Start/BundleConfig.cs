@@ -3,11 +3,10 @@ using BundleTransformer.Core.Orderers;
 using BundleTransformer.Core.Transformers;
 using System.Web.Optimization;
 
-namespace ASP.NET_MVC5_Bootstrap3_3_1_LESS
+namespace SH.Web.UI
 {
     public class BundleConfig
     {
-        // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.UseCdn = true;
@@ -33,9 +32,6 @@ namespace ASP.NET_MVC5_Bootstrap3_3_1_LESS
             jqueryvalBundle.Orderer = nullOrderer;
             bundles.Add(jqueryvalBundle);
 
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-
             var modernizrBundle = new ScriptBundle("~/bundles/modernizr");
             modernizrBundle.Include("~/Scripts/modernizr-*");
             modernizrBundle.Transforms.Add(jsTransformer);
@@ -47,6 +43,14 @@ namespace ASP.NET_MVC5_Bootstrap3_3_1_LESS
             bootstrapBundle.Transforms.Add(jsTransformer);
             bootstrapBundle.Orderer = nullOrderer;
             bundles.Add(bootstrapBundle);
+
+            var knockout = new ScriptBundle("~/bundles/ko");
+            knockout.Include("~/Scripts/knockout-3.3.0.js");
+            knockout.Transforms.Add(jsTransformer);
+            knockout.Orderer = nullOrderer;
+            bundles.Add(knockout);
+
+
         }
     }
 }
