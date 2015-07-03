@@ -1,0 +1,4 @@
+C:\Users\Samer\Documents\Visual Studio 2013\Projects\SmartHotel\SH\SH.Business\bin\Debug\SH.Business.dll
+C:\Users\Samer\Documents\Visual Studio 2013\Projects\SmartHotel\SH\SH.Business\bin\Debug\SH.Business.pdb
+C:\Users\Samer\Documents\Visual Studio 2013\Projects\SmartHotel\SH\SH.Business\obj\Debug\SH.Business.dll
+C:\Users\Samer\Documents\Visual Studio 2013\Projects\SmartHotel\SH\SH.Business\obj\Debug\SH.Business.pdb

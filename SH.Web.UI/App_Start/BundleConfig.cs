@@ -46,6 +46,7 @@ namespace SH.Web.UI
 
             var knockout = new ScriptBundle("~/bundles/ko");
             knockout.Include("~/Scripts/knockout-3.3.0.js");
+            knockout.Include("~/Scripts/underscore.min.js");
             knockout.Transforms.Add(jsTransformer);
             knockout.Orderer = nullOrderer;
             bundles.Add(knockout);

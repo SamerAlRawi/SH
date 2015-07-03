@@ -43,8 +43,8 @@ input[type="checkbox"].input-validation-error {
 
 .weatherContiner {
     background-color: aquamarine;
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 140px;
     padding: 15px;
     margin: 15px;
 }
@@ -87,11 +87,39 @@ input[type="checkbox"].input-validation-error {
 }
 
 div[role=main] {
-  margin: 1em;
-  width: 800px;
+    margin: 1em;
+    width: 800px;
 }
 
 div[role=main] div {
-  display: inline-block;
-  vertical-align: bottom;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+a.boxclose {
+    float: right;
+    margin-top: -22px;
+    margin-right: -22px;
+    cursor: pointer;
+    color: #fff;
+    border: 1px solid #AEAEAE;
+    border-radius: 22px;
+    background: #605F61;
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 0px;
+    padding: 11px 3px;
+}
+
+a.boxclose:before {
+    content: "×";
+}
+
+a.boxclose:hover {
+    color: #fff;
+}
+
+a {
+    text-decoration: none !important;
 }

@@ -1,18 +1,36 @@
-﻿@using SH.Web.UI.Models
-@{
+﻿@{
     ViewBag.Title = "Home Page";
 }
 
 @Html.Partial("_Weather")
 
 <div role="main" data-bind="foreach: ZipCodes">
-    <div class="weatherContiner widget">
-        <weather params="ZipCode: Code"></weather>
-    </div>
+    <weather params="ZipCode: Code, RemoveArea: $parent.RemoveArea"></weather>
 </div>
 
 <script type="text/javascript">
     $(document).ready(function () {
-        ko.applyBindings({ ZipCodes: [{ Code: 44106 }, { Code: 75001 }, { Code: 75002 }] });
+
+        $.ajax({
+            url: '/ZipCodes/Index',
+            method: "GET",
+            success: function (data) {
+                ko.applyBindings(buildMainViewModel(data));
+            }
+        });
+
+
     });
+
+    function buildMainViewModel(data) {
+        {
+            var viewModel = {};
+            viewModel.ZipCodes = ko.observableArray(data);
+            viewModel.RemoveArea = function(zipcode) {
+                viewModel.ZipCodes(_.reject(viewModel.ZipCodes(), function(e) { return (e.Code == zipcode); }));
+            };
+
+            return viewModel;
+        }
+    }
 </script>
