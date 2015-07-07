@@ -30,6 +30,7 @@ namespace SH.Web.UI.App_Start
         public static void RegisterTypes(IUnityContainer container)
         {
             container.RegisterType<IZipCodesService, ZipCodesService>();
+            container.RegisterType<IWeatherService, WeatherService>();
         }
     }
 }

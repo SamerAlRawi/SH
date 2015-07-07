@@ -5,7 +5,7 @@ namespace SH.Business
 {
     public class ZipCodesService : IZipCodesService
     {
-        public IList<ZipCode> GetRandomZipCodes(int length)
+        public IList<ZipCode> GetZipCodes()
         {
             return GetAllZipCodes().ToList();
         }

@@ -1,6 +1,5 @@
 ﻿<script type="text/javascript">
     $(document).ready(function () {
-        console.log(ko.components);
         if (!ko.components.isRegistered('weather')) {
             ko.components.register('weather', {
                 template: { element: 'weather-template' },
@@ -10,11 +9,17 @@
             function buildModel(params) {
                 var self = this;
                 self.Description = ko.observable('');
+                self.Country = ko.observable('');
                 self.Name = ko.observable('');
+                self.Icon = ko.observable('');
                 self.showInput = ko.observable(false);
                 self.ZipCode = ko.observable(params.ZipCode);
                 self.NewZipCode = ko.observable(params.ZipCode);
                 self.RemoveArea = params.RemoveArea;
+
+                self.IconUrl = ko.computed(function () {
+                    return 'http://openweathermap.org/img/w/' + self.Icon() + '.png';
+                });
 
                 self.changeZipCode = function () {
                     self.showInput(!self.showInput());
@@ -27,16 +32,22 @@
                 }
 
                 self.updateData = function (data) {
+                    console.log(data);
                     self.Name(data.name);
                     self.Description(data.weather[0].main);
+                    self.Icon(data.weather[0].icon);
+                    self.Country(data.sys.country);
                 };
 
                 function getWeather(zipcode) {
-                    var weather = 'http://api.openweathermap.org/data/2.5/weather?zip=' + zipcode;
                     $.ajax({
-                        dataType: "jsonp",
-                        url: weather,
-                        success: self.updateData
+                        dataType: "json",
+                        url: '/ZipCodes/GetWeather/' + zipcode,
+                        success: self.updateData,
+                        error: function (x, y) {
+                            console.log(x);
+                            console.log(y);
+                        }
                     });
                 }
 
@@ -54,8 +65,8 @@
         <!-- ko if: showInput() -->
         <div>
             <form data-bind="submit: updateZipCode">
-                <input type="text" data-bind="value: NewZipCode" class="weather-input"/>
-                <input type="submit" data-bind="click: updateZipCode" class="weather-button" value=""/>
+                <input type="text" data-bind="value: NewZipCode" class="weather-input" />
+                <input type="submit" data-bind="click: updateZipCode" class="weather-button" value="" />
             </form>
         </div>
         <!-- /ko -->
@@ -64,6 +75,8 @@
         <!-- /ko -->
 
         <h4 data-bind="text: Name"></h4>
-        <h2 data-bind="text: Description"></h2>
+        <h3 data-bind="text: Description" class="ib"></h3>
+        <img data-bind="attr:{ src: IconUrl }" class="ib" />
+
     </div>
 </template>

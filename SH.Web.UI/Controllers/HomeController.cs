@@ -10,7 +10,7 @@ namespace SH.Web.UI.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
     }

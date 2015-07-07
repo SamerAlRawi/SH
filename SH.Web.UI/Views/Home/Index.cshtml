@@ -2,7 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
-@Html.Partial("_Weather")
+@Html.Partial("~/Views/Widgets/_Weather.cshtml")
 
 <div role="main" data-bind="foreach: ZipCodes">
     <weather params="ZipCode: Code, RemoveArea: $parent.RemoveArea"></weather>
