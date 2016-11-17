@@ -1,7 +1,6 @@
 ### Sample weather app
+using:
 
-using angularJS 
-
-componenets
+AngularJS componenets
 
 MVC
