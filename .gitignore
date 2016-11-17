@@ -31,3 +31,5 @@ SH.Business.Tests/*/*/*/*.dll
 *.cache
 *.txt
 *.xml
+*.cache
+*.FileListAbsolute.txt
