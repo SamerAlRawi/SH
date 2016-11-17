@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SH.Web.UI", "SH.Web.UI\SH.Web.UI.csproj", "{2835FDBA-96BA-4D5C-850D-A909BB12F4E3}"
 EndProject
@@ -12,6 +12,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SH.Business.Tests", "SH.Business.Tests\SH.Business.Tests.csproj", "{3FC47D02-8169-477C-87B8-4377942B21F4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SH.Web.UI.Tests", "SH.Web.UI.Tests\SH.Web.UI.Tests.csproj", "{30BD11B9-2C34-403E-B05F-43828CC351E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{52871126-3EEB-48D5-86F7-28272A5572B7}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
